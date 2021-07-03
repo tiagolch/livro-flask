@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask import make_response
 
 
@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return '<h1>teste</h1>'
+	return render_template('index.html')
 	
 
 @app.route('/user/<name>')
