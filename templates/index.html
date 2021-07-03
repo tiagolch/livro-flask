@@ -1,4 +1,5 @@
-{%extends 'base.html'%}
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {%block title%}
     TITULO
@@ -8,9 +9,13 @@
 <h1>Navbar</h1>
 {%endblock%}
 
-{%block content%}   
-    <h1>Corpo  da pagina</h1>
-    {{ super() }} <!-- Chama a informação que esta na base.html-->
+{%block page_content%}   
+
+    <div class="page-header">
+        <h1>Ola {% if name %} {{ name }} {% else %} Estranho {% endif %}</h1>
+    </div>
+    {{ wtf.quick_form(form) }}
+
     <br>
     <section
     class=" d-flex justify-content-center 

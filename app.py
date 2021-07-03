@@ -3,15 +3,31 @@ from flask import make_response
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from datetime import datetime
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+
+
+class NameForm(FlaskForm):
+    submit = SubmitField('Submit')
+    name = StringField('Qual o seu nome?', validators=[DataRequired()])
+
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'chave_secreta'
 bootstrap = Bootstrap(app)
 moment = Moment(app)
 
-@app.route('/')
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-	return render_template('index.html', current_time=datetime.utcnow())
+	name = None
+	form = NameForm()
+	if form.validate_on_submit():
+			name = form.name.data
+			form.name.data = ''
+	return render_template('index.html',form=form, name=name, current_time=datetime.utcnow())
 	
 
 @app.route('/user/<name>')
