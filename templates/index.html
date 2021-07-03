@@ -11,8 +11,16 @@
 {%block content%}   
     <h1>Corpo  da pagina</h1>
     {{ super() }} <!-- Chama a informação que esta na base.html-->
+    <br>
+    <section
+    class=" d-flex justify-content-center 
+            justify-content-lg-between p-4 border-bottom">
 
-    <p>{{ moment(current_time).format('LLL') }}</p>
-    <p>{{ moment(current_time).fromNow(refresh=True) }}</p>
+        <div class="text-center text-lg-start bg-light text-muted">
+            <p>{{ moment(current_time).format('LLL') }}</p>
+            <p>{{ moment(current_time).fromNow(refresh=True) }}</p>
+        </div>
+    </section>
+   
 {%endblock%}
 
