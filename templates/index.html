@@ -1,4 +1,4 @@
-{%extends 'bootstrap/base.html'%}
+{%extends 'base.html'%}
 
 {%block title%}
     TITULO
@@ -11,8 +11,8 @@
 {%block content%}   
     <h1>Corpo  da pagina</h1>
     {{ super() }} <!-- Chama a informação que esta na base.html-->
+
+    <p>{{ moment(current_time).format('LLL') }}</p>
+    <p>{{ moment(current_time).fromNow(refresh=True) }}</p>
 {%endblock%}
 
-{%block footer%}
-<h1>Rodape</h1>
-{%endblock%}
