@@ -1,15 +1,16 @@
-{%extends 'base.html'%}
+{%extends 'bootstrap/base.html'%}
 
 {%block title%}
     TITULO
 {%endblock%}
 
-{%block nav%}
-<h1>Cabeçalho</h1>
+{%block navbar %}
+<h1>Navbar</h1>
 {%endblock%}
 
-{%block content%}
+{%block content%}   
     <h1>Corpo  da pagina</h1>
+    {{ super() }} <!-- Chama a informação que esta na base.html-->
 {%endblock%}
 
 {%block footer%}
